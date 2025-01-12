@@ -3,7 +3,6 @@ title = "Arduino Game Console"
 date = 2025-01-11
 description = "A guide to creating a portable Arduino game console for retro gaming enthusiasts."
 draft = false
-url = "/posts/arduino-game-console/"
 +++
 
 ## 1. Motivation
