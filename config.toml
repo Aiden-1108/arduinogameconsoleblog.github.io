@@ -1,0 +1,4 @@
+baseURL = "https://arduinogameconsoleblog.github.io/"
+languageCode = "en-us"
+title = "Arduino Game Console"
+theme = "archie"
