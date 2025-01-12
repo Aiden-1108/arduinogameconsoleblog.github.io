@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Arduino Game Console - Arduino Game Console</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="A guide to creating a portable Arduino game console for retro gaming enthusiasts." />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://arduinogameconsoleblog.github.io/posts/arduino-game-console/">
+  <meta property="og:site_name" content="Arduino Game Console">
+  <meta property="og:title" content="Arduino Game Console">
+  <meta property="og:description" content="A guide to creating a portable Arduino game console for retro gaming enthusiasts.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-01-11T00:00:00+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Arduino Game Console">
+  <meta name="twitter:description" content="A guide to creating a portable Arduino game console for retro gaming enthusiasts.">
+
+        <link href="https://arduinogameconsoleblog.github.io/css/fonts.11a1877508139eac0b5b4852ceb110c35641b3533321e66e39149e901ed5756b.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://arduinogameconsoleblog.github.io/css/main.5dcfc1cb36f925ae4fec2d94c47b6e9ae726ee5444398210329db9e68fdc3cd4.css" />
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://arduinogameconsoleblog.github.io/">Arduino Game Console</a>
+	</div>
+	<nav>
+		
+		
+	</nav>
+</header>
+
+<main>
+  <article>
+    <div class="post-container">
+      
+      <div class="post-content">
+        <div class="title">
+          <h1 class="title">Arduino Game Console</h1>
+          <div class="meta">Posted on Jan 11, 2025</div>
+        </div>
+        
+        <section class="body">
+          <h2 id="1-motivation">1. Motivation</h2>
+<p>I came across this project while searching for interesting Arduino projects to dive into. As someone with a passion for retro games, I was intrigued by the idea of creating a portable Arduino game console. This project allowed me to combine my interest in retro gaming with my desire to explore hardware design and software development.</p>
+<hr>
+<h2 id="2-how-to-build-the-console">2. How to Build the Console</h2>
+<h3 id="parts-needed">Parts Needed</h3>
+<ul>
+<li><strong>Arduino Leonardo</strong></li>
+<li><strong>0.96-inch OLED Display Module</strong></li>
+<li><strong>ALP1205 Buzzer</strong></li>
+<li><strong>Tactile Switches (for buttons)</strong></li>
+<li><strong>3-Pin Slide Switch</strong></li>
+</ul>
+<h3 id="instructions">Instructions</h3>
+<h4 id="step-1-set-up-the-arduino-leonardo">Step 1: Set Up the Arduino Leonardo</h4>
+<ol>
+<li>Ensure the Arduino IDE is installed on your computer. You can download it from Arduino’s <a href="https://www.arduino.cc/en/software">official website</a>.</li>
+</ol>
+<h4 id="step-2-connect-the-oled-display-module">Step 2: Connect the OLED Display Module</h4>
+<ol>
+<li>Use the I2C communication protocol to connect the OLED module:
+<ul>
+<li><strong>SDA</strong> pin on the display connects to <strong>A4</strong> (SDA pin) on the Leonardo.</li>
+<li><strong>SCL</strong> pin on the display connects to <strong>A5</strong> (SCL pin) on the Leonardo.</li>
+<li><strong>VCC</strong> connects to <strong>5V</strong>.</li>
+<li><strong>GND</strong> connects to <strong>GND</strong>.</li>
+</ul>
+</li>
+</ol>
+<h4 id="step-3-wire-the-buttons">Step 3: Wire the Buttons</h4>
+<ol>
+<li>Connect tactile switches to digital pins on the Leonardo for input:
+<ul>
+<li>Button 1 to <strong>pin 2</strong>.</li>
+<li>Button 2 to <strong>pin 3</strong>.</li>
+<li>Button 3 to <strong>pin 4</strong>.</li>
+<li>Button 4 to <strong>pin 5</strong>.</li>
+</ul>
+</li>
+<li>Use pull-down resistors (10kΩ) to ensure stable input readings.</li>
+</ol>
+<h4 id="step-4-add-the-slide-switch">Step 4: Add the Slide Switch</h4>
+<ol>
+<li>Connect one side of the slide switch to a digital pin (e.g., <strong>pin 6</strong>) and the other side to <strong>GND</strong>.</li>
+</ol>
+<h4 id="step-5-attach-the-buzzer">Step 5: Attach the Buzzer</h4>
+<ol>
+<li>Connect the positive terminal of the buzzer to a PWM pin (e.g., <strong>pin 9</strong>) and the negative terminal to <strong>GND</strong>.</li>
+</ol>
+<h4 id="step-6-power-the-console">Step 6: Power the Console</h4>
+<ol>
+<li>Use the Arduino Leonardo’s USB connection for power and programming.</li>
+<li>Alternatively, connect a portable power supply via its power input.</li>
+</ol>
+<hr>
+<h2 id="3-theoretical-background">3. Theoretical Background</h2>
+<h3 id="principle-of-the-button">Principle of the Button:</h3>
+<p>Buttons in Arduino are connected to digital input pins to detect their status. When pressed, the button closes the circuit, sending a HIGH signal to the pin. Arduino reads this signal and performs corresponding tasks based on the button’s state. Buttons can be connected in various configurations, such as:</p>
+<ul>
+<li>Pin 1 to Pin 2, or Pin 3 to Pin 4.</li>
+<li>Diagonal connections (e.g., Pin 1 to Pin 4).</li>
+</ul>
+<h3 id="principle-of-the-slide-switch">Principle of the Slide Switch:</h3>
+<p>Slide switches work similarly to buttons by connecting to digital input pins. When toggled, the switch opens or closes the circuit, sending a HIGH or LOW signal to the pin. Arduino reads this signal and executes actions depending on the switch’s state.</p>
+<h3 id="principle-of-oled-displays">Principle of OLED Displays:</h3>
+<p>OLED displays use organic light-emitting diodes to produce bright and high-contrast images without a backlight. These modules communicate with Arduino via I2C or SPI protocols, enabling the display of text, images, and graphics. Their low power consumption and compact size make them ideal for portable projects like this game console.</p>
+<hr>
+<h2 id="4-operating-the-console">4. Operating the Console</h2>
+<h3 id="installing-games">Installing Games</h3>
+<p>To play games on the console, you can use Arduboy-compatible games. Here’s how:</p>
+<ol>
+<li>
+<p><strong>Download Games:</strong>
+Visit the following websites to find Arduboy games:</p>
+<ul>
+<li><a href="https://community.arduboy.com/c/games/35">Arduboy Games Community</a></li>
+<li><a href="https://arduboy.ried.cl/">Erwin’s Arduboy Game Collection</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Install the Arduboy Uploader Program:</strong></p>
+<ul>
+<li>Download the Arduboy Uploader from <a href="https://community.arduboy.com/t/arduboy-uploader/3473">this link</a>.</li>
+<li>Install the program on your computer.</li>
+</ul>
+</li>
+<li>
+<p><strong>Load the Game:</strong></p>
+<ul>
+<li>Download a <code>.hex</code> file of your chosen game from the websites above.</li>
+<li>Open the Arduboy Uploader program.</li>
+<li>Connect your Arduino Game Console to your computer using a USB cable.</li>
+<li>Use the Arduboy Uploader to select the <code>.hex</code> file and upload it to the console.</li>
+<li>Once the upload is complete, the game will be playable on your console.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="5-final-conclusions">5. Final Conclusions</h2>
+<p>This project was a rewarding experience that taught me the importance of precision and problem-solving in hardware development. Although it was challenging to adjust the wire lengths and ensure proper connections, I felt immense pride in neatly arranging the wires on a breadboard and successfully completing the console.</p>
+<p>Through this project, I gained:</p>
+<ul>
+<li>Deeper knowledge of Arduino programming and wiring.</li>
+<li>Practical experience with OLED displays and buzzer integration.</li>
+<li>Confidence in creating functional, portable devices from scratch.</li>
+</ul>
+<p>This Arduino Game Console project not only strengthened my technical skills but also allowed me to explore my interest in retro gaming. I hope this guide inspires you to create your own console and experiment with unique game ideas!</p>
+
+        </section>
+        <div class="post-tags">
+          
+          
+          
+        </div>
+      </div>
+
+      
+      
+    </div>
+
+    </article>
+</main>
+<footer>
+  <div style="display:flex"></div>
+  <div class="footer-info">
+    2025  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+
+</div>
+    </body>
+</html>
